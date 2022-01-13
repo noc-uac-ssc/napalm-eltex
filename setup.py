@@ -1,26 +1,76 @@
-import setuptools
+"""setup.py file."""
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+from setuptools import setup, find_packages
 
-setuptools.setup(
-    name="example-pkg-YOUR-USERNAME-HERE",
-    version="0.0.1",
-    author="Example Author",
-    author_email="author@example.com",
-    description="A small example package",
+
+
+__author__ = 'Lagovskiy Sergey <slagovskiy@gmail.com>'
+
+
+
+# with open("requirements.txt", "r") as fs:
+
+#     reqs = [r for r in fs.read().splitlines() if (len(r) > 0 and not r.startswith("#"))]
+
+
+
+with open("README.md", "r") as fs:
+
+    long_description = fs.read()
+
+
+
+setup(
+
+    name="napalm-eltex",
+
+    version="0.1.0",
+
+    packages=find_packages(exclude=("test*",)),
+
+    author="UAC-SSC",
+
+    author_email="noc@uac-ssc.ru",
+
+    description="NAPALM driver for Eltex switches",
+
+    license="NIT License",
+
     long_description=long_description,
+
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
-    project_urls={
-        "Bug Tracker": "https://github.com/pypa/sampleproject/issues",
-    },
+
     classifiers=[
-        "Programming Language :: Python :: 3",
+
+        "Topic :: Utilities",
+
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+
+        "Programming Language :: Python :: 3",
+
+        "Programming Language :: Python :: 3.6",
+
+        "Programming Language :: Python :: 3.7",
+
+        "Programming Language :: Python :: 3.8",
+
+        "Programming Language :: Python :: 3.9",
+
+        'Operating System :: OS Independent',
+
     ],
-    package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
-    python_requires=">=3.6",
+
+    url="https://github.com/noc-uac-ssc/napalm-eltex",
+
+    project_urls={
+        "Bug Tracker": "https://github.com/noc-uac-ssc/napalm-eltex/issues",
+    },
+    include_package_data=True,
+
+    install_requires=[
+        'napalm>=3.3',
+        'pandas>=1.3'
+    ]
 )
+
