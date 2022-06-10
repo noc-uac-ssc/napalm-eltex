@@ -671,6 +671,9 @@ class CEDriver(NetworkDriver):
             return {}
 
         try:
+            re_ip = r'(((25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?))'
+            re_mac = r'([0-9a-fA-F]{2}(([:\-]?)[0-9a-fA-F]{2}){5})'
+
             data_block = -1
             for line in show_arp.splitlines():
                 if data_block != -1:
@@ -680,12 +683,20 @@ class CEDriver(NetworkDriver):
             d = pd.read_fwf(StringIO(data_block), header=None, dtype={0: str, 1: str, 2: str, 3: str, 4: str})
             for i in d.index:
                 row = d.values[i]
-                arp_table.append({
-                    'interface': row[1],
-                    'mac': row[3],
-                    'ip': row[2],
-                    'age': -1
-                })
+                if (len(re.findall(re_mac, row[3])) > 0) and (len(re.findall(re_ip, row[2])) > 0):
+                    arp_table.append({
+                        'interface': row[1],
+                        'mac': row[3],
+                        'ip': row[2],
+                        'age': -1
+                    })
+                if (len(re.findall(re_mac, row[4])) > 0) and (len(re.findall(re_ip, row[3])) > 0):
+                    arp_table.append({
+                        'interface': row[2],
+                        'mac': row[4],
+                        'ip': row[3],
+                        'age': -1
+                    })
         except Exception as err:
             raise Exception('Error parse arp table. {0}'.format(err))
         return arp_table

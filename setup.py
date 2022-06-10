@@ -24,7 +24,7 @@ setup(
 
     name="napalm-eltex",
 
-    version="0.1.0",
+    version="0.1.1",
 
     packages=find_packages(exclude=("test*",)),
 
@@ -56,6 +56,8 @@ setup(
         "Programming Language :: Python :: 3.8",
 
         "Programming Language :: Python :: 3.9",
+
+        "Programming Language :: Python :: 3.10",
 
         'Operating System :: OS Independent',
 
