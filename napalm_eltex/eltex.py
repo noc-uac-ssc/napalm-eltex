@@ -1,4 +1,4 @@
-"""
+﻿"""
 Napalm driver for Eltes switches.
 """
 from __future__ import unicode_literals
@@ -16,7 +16,11 @@ from napalm.base.exceptions import (
 )
 # import third party lib
 from netmiko import ConnectHandler
-from netmiko.ssh_exception import NetMikoTimeoutException
+# from netmiko.ssh_exception import NetMikoTimeoutException
+try:
+    from netmiko.ssh_exception import NetMikoTimeoutException
+except ModuleNotFoundError:
+    from netmiko import NetMikoTimeoutException
 
 # from scp import SCPClient
 
