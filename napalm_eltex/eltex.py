@@ -287,7 +287,7 @@ class CEDriver(NetworkDriver):
         }
         """
         interfaces = {}
-        show_interfaces = self.device.send_command('show interfaces')
+        show_interfaces = self.device.send_command('show interfaces', read_timeout=60.0)
         if not show_interfaces:
             return {}
         # вывод собирается в список текстовых блоков по каждому интерфейсу

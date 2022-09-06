@@ -24,7 +24,7 @@ setup(
 
     name="napalm-eltex",
 
-    version="0.1.1",
+    version="0.1.3",
 
     packages=find_packages(exclude=("test*",)),
 
