@@ -18,7 +18,7 @@ from napalm.base.exceptions import (
 from netmiko import ConnectHandler
 # from netmiko.ssh_exception import NetMikoTimeoutException
 try:
-    from netmiko.ssh_exception import NetMikoTimeoutException
+    from netmiko.exceptions import NetMikoTimeoutException
 except ModuleNotFoundError:
     from netmiko import NetMikoTimeoutException
 
