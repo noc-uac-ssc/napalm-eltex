@@ -71,7 +71,7 @@ setup(
     include_package_data=True,
 
     install_requires=[
-        'napalm>=3.3',
+        'napalm>=4.0.0',
         'pandas>=1.3'
     ]
 )

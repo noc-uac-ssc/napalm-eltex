@@ -721,10 +721,10 @@ class CEDriver(NetworkDriver):
 
         if retrieve.lower() in ('running', 'all'):
             command = 'show running-config'
-            config['running'] = str(self.device.send_command(command))
+            config['running'] = str(self.device.send_command(command, read_timeout=25.0))
         if retrieve.lower() in ('startup', 'all'):
             command = 'show startup-config'
-            config['startup'] = str(self.device.send_command(command))
+            config['startup'] = str(self.device.send_command(command, read_timeout=25.0))
         return config
 
     def get_lldp_neighbors(self):
